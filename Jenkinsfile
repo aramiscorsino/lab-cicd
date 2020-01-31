@@ -12,5 +12,11 @@ pipeline {
                sh 'mvn -B -DskipTests clean package'
             }
         }
+        stage2('install') {
+            steps {
+               sh 'ansible-playbook -s playbook-openjdk.yml -k -u fiap --extra-vars "ansible_sudo_pass=fi@p2020"'
+            }
+
+        }
     }
 }
